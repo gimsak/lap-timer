@@ -1,0 +1,455 @@
+/* Custom styles to complement Bootstrap */
+body { 
+  min-height: 100vh;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card.bg-secondary {
+  background-color: #2d3238 !important;
+}
+
+.card-header {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Start Lights */
+.start-lights {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px 0;
+}
+
+.light {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #dc3545;
+  box-shadow: 0 0 20px rgba(220, 53, 69, 0.5),
+              inset 0 0 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border: 4px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.light::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 30%;
+  height: 30%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  filter: blur(4px);
+}
+
+.light.active {
+  background-color: #198754;
+  box-shadow: 0 0 40px rgba(25, 135, 84, 0.7),
+              inset 0 0 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(25, 135, 84, 0.3);
+}
+
+@media (max-width: 767px) {
+  .start-lights {
+    gap: 20px;
+  }
+  
+  .light {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Button press animation */
+@keyframes buttonPress {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.btn-pressed {
+  animation: buttonPress 0.2s ease;
+}
+
+/* Keyboard shortcut hints */
+.key-hint {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-left: 8px;
+  font-size: 0.875rem;
+  font-weight: normal;
+  vertical-align: middle;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn:disabled .key-hint {
+  opacity: 0.5;
+}
+
+/* Timer */
+.timer-large { 
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  transition: color 0.3s ease;
+  font-family: monospace;
+  letter-spacing: -2px;
+}
+
+.timer-large small {
+  font-size: 1.5rem;
+  opacity: 0.8;
+  letter-spacing: 0;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Snapshot */
+.snapshot-wrapper {
+  position: relative;
+  width: 100%;
+  background: #1a1d20;
+  border-radius: 0 0 0.375rem 0.375rem;
+  overflow: hidden;
+}
+
+#snapshot {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.snapshot-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+.snapshot-info .badge {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Controls */
+.controls {
+  width: 100%;
+}
+
+/* Zoom control */
+.zoom-control {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  min-width: 250px;
+}
+
+.zoom-control label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+}
+
+.zoom-control .form-range {
+  width: 150px;
+  padding: 0;
+  background: transparent;
+}
+
+.zoom-control span {
+  color: #fff;
+  font-size: 0.875rem;
+  min-width: 24px;
+  font-weight: 500;
+}
+
+/* Input groups */
+.input-group {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.375rem;
+  padding: 0.25rem;
+}
+
+.input-group-text {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+.form-control {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #212529;
+  font-weight: 500;
+  text-align: center;
+  margin: 0 0.25rem;
+}
+
+/* Buttons */
+.btn {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 2rem;
+  min-width: 140px;
+}
+
+/* Video container */
+#video-container {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  margin: 0 auto;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  background: #1a1d20;
+}
+
+#video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #1a1d20;
+}
+
+#canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+#fullscreenBtn {
+  padding: 0.5rem;
+  line-height: 1;
+  border-width: 2px;
+  transition: all 0.3s ease;
+}
+
+#fullscreenBtn:hover {
+  transform: scale(1.1);
+}
+
+#fullscreenBtn svg {
+  display: block;
+}
+
+/* Fullscreen mode styles */
+:fullscreen {
+  background-color: #212529;
+  padding: 1rem;
+}
+
+:-webkit-full-screen {
+  background-color: #212529;
+  padding: 1rem;
+}
+
+:-moz-full-screen {
+  background-color: #212529;
+  padding: 1rem;
+}
+
+/* Race status */
+.race-status-content {
+  min-height: 200px;
+}
+
+.winner {
+  background: rgba(25, 135, 84, 0.2);
+  border-radius: 0.375rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.winner-title {
+  font-size: 1.25rem;
+  color: #198754;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.winner-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.winner-time {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #198754;
+}
+
+.race-status {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.375rem;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+  font-weight: 500;
+  text-align: center;
+}
+
+.invalid-result {
+  color: #dc3545;
+  margin: 0.5rem 0;
+}
+
+.camera-status {
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  background: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.camera-status.error {
+  background: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+}
+
+.camera-status.success {
+  background: rgba(25, 135, 84, 0.2);
+  color: #198754;
+}
+
+/* Track status cards */
+.track-status {
+  margin-bottom: 1rem;
+}
+
+.track-status .card {
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.track-status .card-body {
+  padding: 1rem;
+}
+
+.track-status .track-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.track-status .track-time {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.track-status .track-status-badge {
+  font-size: 0.875rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+.track-status .status-running {
+  background: rgba(25, 135, 84, 0.2);
+  color: #198754;
+}
+
+.track-status .status-dnf {
+  background: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+}
+
+/* Make video container responsive */
+@media (max-width: 767px) {
+  #video-container,
+  .snapshot-wrapper {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+  }
+  
+  #snapshot {
+    width: 100%;
+    height: auto;
+  }
+  
+  .zoom-control {
+    min-width: 200px;
+  }
+  
+  .zoom-control .form-range {
+    width: 120px;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    min-width: 120px;
+  }
+  
+  .input-group {
+    margin: 0.5rem 0;
+  }
+  
+  .input-group > * {
+    width: auto !important;
+  }
+  
+  .controls > div {
+    flex-direction: column;
+  }
+
+  .timer-large {
+    font-size: 4rem;
+  }
+}
+
+/* Donate button and modal */
+.btn-warning {
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  transform: scale(1.05);
+}
+
+.modal-content {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.btn-close-white {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+@media (max-width: 767px) {
+  .position-absolute.top-0.end-0 {
+    position: static !important;
+    margin-top: 1rem;
+    width: 100%;
+  }
+}

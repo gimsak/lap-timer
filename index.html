@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Mini 4WD Lap Timer - Race Timing System</title>
+  <meta name="title" content="Mini 4WD Lap Timer - Race Timing System">
+  <meta name="description" content="Professional lap timing system for Mini 4WD races with multi-track support, automatic detection, and real-time results. Perfect for race organizers and Mini 4WD enthusiasts.">
+  <meta name="keywords" content="Mini 4WD, lap timer, race timing, tamiya, racing system, track timer">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gimdash.com/">
+  <meta property="og:title" content="Mini 4WD Lap Timer - Race Timing System">
+  <meta property="og:description" content="Professional lap timing system for Mini 4WD races with multi-track support, automatic detection, and real-time results. Perfect for race organizers and Mini 4WD enthusiasts.">
+  <meta property="og:image" content="favicon/android-icon-192x192.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://gimdash.com/">
+  <meta property="twitter:title" content="Mini 4WD Lap Timer - Race Timing System">
+  <meta property="twitter:description" content="Professional lap timing system for Mini 4WD races with multi-track support, automatic detection, and real-time results. Perfect for race organizers and Mini 4WD enthusiasts.">
+  <meta property="twitter:image" content="favicon/android-icon-192x192.png">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#212529">
+  <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#212529">
+
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-dark text-light">
+  <div class="container-fluid py-4">
+    <!-- Header with Title, Fullscreen and Donate buttons -->
+    <div class="position-relative mb-4">
+      <div class="d-flex justify-content-center align-items-center gap-3">
+        <h1 class="text-center mb-0">Mini 4WD Lap Timer</h1>
+        <button id="fullscreenBtn" class="btn btn-outline-light btn-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        </button>
+      </div>
+      <button type="button" class="btn btn-warning position-absolute top-0 end-0" data-bs-toggle="modal" data-bs-target="#donateModal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart-fill me-2" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+        </svg>
+        Donate
+      </button>
+    </div>
+
+    <!-- Controls Section -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card bg-secondary">
+          <div class="card-body">
+            <div class="controls">
+              <!-- Input Controls Row -->
+              <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 mb-4">
+                <div class="zoom-control">
+                  <label for="zoomRange">Camera Zoom:</label>
+                  <div class="d-flex align-items-center gap-2">
+                    <span>1x</span>
+                    <input type="range" class="form-range" id="zoomRange" min="1" max="3" step="0.1" value="1">
+                    <span>3x</span>
+                  </div>
+                </div>
+                
+                <div class="input-group" style="width: auto;">
+                  <label class="input-group-text" for="trackCount">Number of Tracks:</label>
+                  <input type="number" class="form-control" id="trackCount" min="2" max="5" value="3" style="width:80px;">
+                </div>
+                
+                <div class="time-limit-controls input-group" style="width: auto;">
+                  <label class="input-group-text">Time Limit:</label>
+                  <input type="number" class="form-control" id="timeLimitMinutes" min="0" max="59" value="0" style="width:70px;" placeholder="Min">
+                  <span class="input-group-text">m</span>
+                  <input type="number" class="form-control" id="timeLimitSeconds" min="0" max="59" value="20" style="width:70px;" placeholder="Sec">
+                  <span class="input-group-text">s</span>
+                  <input type="number" class="form-control" id="timeLimitMs" min="0" max="999" value="0" step="1" style="width:80px;" placeholder="ms">
+                  <span class="input-group-text">ms</span>
+                </div>
+              </div>
+              
+              <!-- Button Controls Row -->
+              <div class="d-flex justify-content-center gap-4">
+                <button id="startBtn" class="btn btn-success btn-lg">
+                  Start
+                  <span class="key-hint">A</span>
+                </button>
+                <button id="finalLapBtn" class="btn btn-warning btn-lg" disabled>
+                  Final Lap
+                  <span class="key-hint">S</span>
+                </button>
+                <button id="resetBtn" class="btn btn-danger btn-lg" disabled>
+                  Reset
+                  <span class="key-hint">D</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timer and Camera Status -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card bg-secondary">
+          <div class="card-body text-center py-4">
+            <!-- Start Lights -->
+            <div class="start-lights mb-4">
+              <div class="light"></div>
+              <div class="light"></div>
+              <div class="light"></div>
+            </div>
+            <div id="timer" class="timer-large mb-3">00:00.000</div>
+            <div id="camera-status" class="camera-status">
+              Camera Status: <span id="camera-status-text">Waiting for permission...</span>
+              <button id="requestCameraBtn" class="btn btn-primary btn-sm ms-2">Enable Camera</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Feed and Race Status -->
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Winner Detection Snapshot -->
+        <div id="snapshot-container" class="card bg-secondary mb-4" style="display: none;">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Winner Detection Snapshot</h5>
+          </div>
+          <div class="card-body p-0">
+            <div class="snapshot-wrapper">
+              <canvas id="snapshot" width="640" height="480"></canvas>
+              <div class="snapshot-info text-center py-2">
+                <span class="badge bg-success"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Feed -->
+        <div class="card bg-secondary mb-4">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Live Camera</h5>
+          </div>
+          <div class="card-body p-0">
+            <div id="video-container">
+              <video id="video" width="640" height="480" autoplay muted playsinline></video>
+              <canvas id="canvas" width="640" height="480"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <!-- Race Status -->
+        <div class="card bg-secondary">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Race Status</h5>
+          </div>
+          <div class="card-body">
+            <div id="laps" class="race-status-content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Donate Modal -->
+  <div class="modal fade" id="donateModal" tabindex="-1" aria-labelledby="donateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title" id="donateModalLabel">Support Mini 4WD Lap Timer</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6 mb-4 mb-md-0">
+              <div class="d-flex flex-column align-items-center">
+                <img src="saweria.png" alt="Saweria Logo" class="mb-3" style="height: 60px;">
+                <p class="text-center mb-4">Support us through Saweria to help maintain and improve the app!</p>
+                <a href="https://saweria.co/gimdash" target="_blank" rel="noopener" class="btn btn-warning btn-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart-fill me-2" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                  </svg>
+                  Donate via Saweria
+                </a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h6 class="text-center mb-3">Top Supporters</h6>
+              <iframe src="https://saweria.co/widgets/leaderboard?streamKey=841f220e285d84ff27384876648372d5" 
+                      title="Saweria Donation Leaderboard"
+                      class="w-100" 
+                      style="height: 400px; border: none; border-radius: 8px;"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

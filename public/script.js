@@ -318,6 +318,12 @@ function reset() {
     validRun: true
   }));
   
+  // Update track labels
+  const trackLabelsContainer = document.querySelector('.track-labels');
+  if (trackLabelsContainer) {
+    trackLabelsContainer.innerHTML = trackNames.map(name => `<div class="track-label">${name}</div>`).join('');
+  }
+  
   lastFrame = null;
   lastDetected = trackNames.map(name => ({ name, time: 0 }));
   mainStartTime = 0;

@@ -2,7 +2,7 @@
 
 A professional web-based lap timing system designed specifically for Mini 4WD racing. This application provides accurate timing, multi-track support, automatic car detection, and real-time results display.
 
-![Mini 4WD Lap Timer](screenshot.jpg)
+![Mini 4WD Lap Timer](public/screenshot.jpg)
 
 ## Features
 

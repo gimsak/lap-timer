@@ -218,7 +218,7 @@ function updateDisplay() {
     
     lapsHtml += `
       <div class="col-md-6 track-status">
-        <div class="card ${hasFinished ? 'bg-success bg-opacity-25' : isDNF ? 'bg-danger bg-opacity-25' : 'bg-secondary'}">
+        <div class="card ${hasFinished ? (position === 1 ? 'bg-success bg-opacity-25' : 'bg-warning bg-opacity-25') : isDNF ? 'bg-danger bg-opacity-25' : 'bg-secondary'}">
           <div class="card-body">
             <h5 class="track-name">Track ${name}</h5>`;
     
